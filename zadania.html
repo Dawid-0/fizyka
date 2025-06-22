@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rozwiązania zadań z fizyki</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #4a69bd;
+            position: relative;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .subtitle {
+            color: #6a89cc;
+            font-size: 1.2rem;
+        }
+        .task {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #4a69bd;
+        }
+        .task:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .task-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .task-number {
+            background-color: #4a69bd;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .task-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+        }
+        .task-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+        .solution {
+            background-color: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid #1976d2;
+        }
+        .formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            background-color: #f8f9fa;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #dee2e6;
+        }
+        .highlight {
+            background-color: #fff9c4;
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+        .result {
+            font-weight: bold;
+            color: #d32f2f;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #ffebee;
+            border-radius: 5px;
+        }
+        .explanation {
+            margin-top: 15px;
+            font-style: italic;
+            color: #546e7a;
+        }
+        .section-title {
+            font-size: 1.1rem;
+            color: #1976d2;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .task {
+                padding: 20px 15px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        .decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #4a69bd 0%, transparent 70%);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        .dec-1 {
+            top: -50px;
+            right: -50px;
+        }
+        .dec-2 {
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decoration dec-1"></div>
+        <div class="decoration dec-2"></div>
+        
+        <header>
+            <h1>Rozwiązania Zadań z Fizyki</h1>
+            <p class="subtitle">Pełne rozwiązania z wyjaśnieniami krok po kroku</p>
+        </header>
+        
+        <!-- Zadanie 1 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">1</div>
+                <h2 class="task-title">Analiza ruchu na podstawie pomiarów</h2>
+            </div>
+            <div class="task-content">
+                <p>Mając pomiary prędkości i czasu:</p>
+                <table>
+                    <tr><th>V (m/s)</th><td>2</td><td>3</td><td>6</td><td>11</td></tr>
+                    <tr><th>t (s)</th><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+                </table>
+                <p>Wyznacz:</p>
+                <p>a) równanie toru ruchu,</p>
+                <p>b) drogę w drugiej i trzeciej sekundzie ruchu,</p>
+                <p>c) prędkość w drugiej sekundzie ruchu,</p>
+                <p>d) przyspieszenie oraz narysuj wykres a(t),</p>
+                <p>e) przyrost drogi i prędkości między 1 a 3 sekundą ruchu.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>a) Równanie toru ruchu:</p>
+                <p>Z danych widzimy, że prędkość zmienia się w czasie. Obliczamy przyspieszenie:</p>
+                <p class="formula">a = ΔV/Δt = (3-2)/(1-0) = 1 m/s²</p>
+                <p>Sprawdzamy dla innych przedziałów: (6-3)/(2-1) = 3 m/s², (11-6)/(3-2) = 5 m/s²</p>
+                <p>Przyspieszenie nie jest stałe, więc ruch nie jest jednostajnie zmienny. Z danych wynika, że przyspieszenie rośnie liniowo: a(t) = 2t + 1</p>
+                <p>Prędkość: V(t) = ∫a(t)dt = ∫(2t+1)dt = t² + t + C</p>
+                <p>Dla t=0, V=2 → C=2</p>
+                <p class="formula">V(t) = t² + t + 2</p>
+                <p>Droga: s(t) = ∫V(t)dt = ∫(t² + t + 2)dt = (1/3)t³ + (1/2)t² + 2t + C</p>
+                <p>Dla t=0, s=0 → C=0</p>
+                <p class="formula">s(t) = (1/3)t³ + (1/2)t² + 2t</p>
+                
+                <p>b) Droga w drugiej i trzeciej sekundzie:</p>
+                <p>Droga w 2. sekundzie: s(2) - s(1) = [(1/3)*8 + (1/2)*4 + 4] - [(1/3)*1 + (1/2)*1 + 2] = [8/3 + 2 + 4] - [1/3 + 0.5 + 2] = [2.67+2+4] - [0.33+0.5+2] = 8.67 - 2.83 = 5.84 m</p>
+                <p>Droga w 3. sekundzie: s(3) - s(2) = [(1/3)*27 + (1/2)*9 + 6] - [(1/3)*8 + (1/2)*4 + 4] = [9 + 4.5 + 6] - [2.67 + 2 + 4] = 19.5 - 8.67 = 10.83 m</p>
+                <p class="result">Droga w 2. sekundzie: 5.84 m, w 3. sekundzie: 10.83 m</p>
+                
+                <p>c) Prędkość w drugiej sekundzie ruchu:</p>
+                <p>V(2) = 2² + 2 + 2 = 4 + 2 + 2 = 8 m/s</p>
+                <p class="result">Prędkość w 2. sekundzie: 8 m/s</p>
+                
+                <p>d) Przyspieszenie: a(t) = 2t + 1</p>
+                <p>Wykres a(t): prosta linia o nachyleniu 2, przecina oś a w punkcie (0,1)</p>
+                <p class="result">a(0)=1 m/s², a(1)=3 m/s², a(2)=5 m/s², a(3)=7 m/s²</p>
+                
+                <p>e) Przyrost drogi i prędkości między 1 a 3 sekundą:</p>
+                <p>Przyrost drogi: s(3) - s(1) = [(1/3)*27 + (1/2)*9 + 6] - [(1/3)*1 + (1/2)*1 + 2] = [9+4.5+6] - [0.33+0.5+2] = 19.5 - 2.83 = 16.67 m</p>
+                <p>Przyrost prędkości: V(3) - V(1) = (9+3+2) - (1+1+2) = 14 - 4 = 10 m/s</p>
+                <p class="result">Przyrost drogi: 16.67 m, przyrost prędkości: 10 m/s</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 2 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">2</div>
+                <h2 class="task-title">Rakieta o zmiennym przyspieszeniu</h2>
+            </div>
+            <div class="task-content">
+                <p>Rakieta zmienia przyspieszenie według wzoru: a(t)=3t+1. Oblicz prędkość rakiety po 3 sekundach oraz wysokość rakiety po upływie 2 sekund.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Prędkość: V(t) = ∫a(t)dt = ∫(3t+1)dt = (3/2)t² + t + C</p>
+                <p>Zakładamy, że w t=0, V=0 → C=0</p>
+                <p class="formula">V(t) = (3/2)t² + t</p>
+                <p>V(3) = (3/2)*9 + 3 = 13.5 + 3 = 16.5 m/s</p>
+                
+                <p>Wysokość: h(t) = ∫V(t)dt = ∫[(3/2)t² + t]dt = (3/2)*(1/3)t³ + (1/2)t² + C = (1/2)t³ + (1/2)t² + C</p>
+                <p>Zakładamy, że w t=0, h=0 → C=0</p>
+                <p class="formula">h(t) = (1/2)t³ + (1/2)t²</p>
+                <p>h(2) = (1/2)*8 + (1/2)*4 = 4 + 2 = 6 m</p>
+                
+                <p class="result">Prędkość po 3s: 16.5 m/s, wysokość po 2s: 6 m</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 3 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">3</div>
+                <h2 class="task-title">Układ dwóch klocków na płaskiej powierzchni</h2>
+            </div>
+            <div class="task-content">
+                <p>Z jakim przyspieszeniem poruszał się będzie układ dwóch klocków pokazanych na rysunku. Współczynnik tarcia klocka o stół wynosi 0,1 (M=3kg, m=1kg). Przyjmij płaską powierzchnię.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Do obliczenia przyspieszenia układu dwóch klocków stosujemy wzór: 
+                a = g(m - μM)/(m + M)</p>
+                <p>Gdzie:</p>
+                <ul>
+                    <li>m = 1 kg – masa klocka wiszącego pionowo</li>
+                    <li>M = 3 kg – masa klocka na stole</li>
+                    <li>μ = 0.1 – współczynnik tarcia kinetycznego</li>
+                    <li>g = 10 m/s² – przyspieszenie ziemskie</li>
+                </ul>
+                <p>Podstawiamy wartości:</p>
+                <p>a = 10 · (1 - 0.1 · 3)/(1 + 3) = 10 · (1 - 0.3)/4 = 10 · 0.7/4 = 7/4 = 1.75 m/s²</p>
+                <p class="result">Przyspieszenie układu: 1.75 m/s²</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 4 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">4</div>
+                <h2 class="task-title">Ruch pod działaniem siły</h2>
+            </div>
+            <div class="task-content">
+                <p>Mając zależność V(t) = 2t² +3, wyznacz wartość siły F, jaka działa na to ciało, jeżeli jego masa m=2 kg. Oblicz drogę jaką pokonało to ciało w pierwszych 3 sekundach ruchu. V₀=0.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Przyspieszenie: a(t) = dV/dt = d(2t² +3)/dt = 4t</p>
+                <p>Siła: F = m*a = 2 * 4t = 8t N</p>
+                <p class="result">F(t) = 8t N</p>
+                
+                <p>Droga: s(t) = ∫V(t)dt = ∫(2t² +3)dt = (2/3)t³ + 3t + C</p>
+                <p>Dla t=0, s=0 → C=0</p>
+                <p>s(3) = (2/3)*27 + 3*3 = 18 + 9 = 27 m</p>
+                <p class="result">Droga w pierwszych 3 sekundach: 27 m</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 5 -->
+<div class="task">
+    <div class="task-header">
+        <div class="task-number">5</div>
+        <h2 class="task-title">Dwa klocki na równi pochyłej</h2>
+    </div>
+    <div class="task-content">
+        <p>Na równi o kącie nachylenia α=30° znajdują się dwa klocki o masach m₁=1kg i m₂=6kg. Układ porusza się w dół równi. m₁ zwisa swobodnie na sznurku poza równią, m₂ znajduje się na równi. Oba klocki są połączone linką przez bloczek. Uwzględnij tarcie (μ=0,2).</p>
+        <p>a) Wyznacz przyspieszenie w układzie</p>
+        <p>b) Wyznacz siłę naciągu linki N</p>
+        <img src="5.png" alt="jeb się">
+    </div>
+    <div class="solution">
+        <div class="section-title">Poprawne rozwiązanie:</div>
+        
+        <p><strong>Siły działające:</strong></p>
+        <p>- Na m₁ (zwisające): siła ciężkości m₁g w dół, siła naciągu N w górę</p>
+        <p>- Na m₂ (na równi):</p>
+        <ul>
+            <li>Siła ciężkości m₂g</li>
+            <li>Składowa równoległa do równi: m₂g·sinα w dół równi</li>
+            <li>Składowa prostopadła: m₂g·cosα</li>
+            <li>Tarcie T = μ·m₂g·cosα w górę równi (przeciw ruchowi)</li>
+            <li>Siła naciągu N w górę równi</li>
+        </ul>
+        
+        <p><strong>Równania ruchu:</strong></p>
+        <img src="5,1.png" alt="walić to" height="40px">
+        <p>Dla m₁ (porusza się w górę):</p>
+        <div class="formula">N - m₁g = m₁a</div>
+        
+        <p>Dla m₂ (porusza się w dół równi):</p>
+        <div class="formula">m₂g·sinα - T - N = m₂a</div>
+        
+        <p><strong>Obliczenie sił:</strong></p>
+        <p>Tarcie: T = μ·m₂g·cosα = 0,2·6·10·cos30° = 0,2·60·(√3/2) = 12·0,866 = 10,392 N</p>
+        <p>Składowa równoległa: m₂g·sinα = 6·10·0,5 = 30 N</p>
+        <p>Siła ciężkości m₁: m₁g = 1·10 = 10 N</p>
+        
+        <p><strong>Układ równań:</strong></p>
+        <div class="formula">1) N - 10 = 1·a</div>
+        <div class="formula">2) 30 - 10,392 - N = 6a → 19,608 - N = 6a</div>
+        
+        <p><strong>Rozwiązanie układu:</strong></p>
+        <p>Z równania 1): N = 10 + a</p>
+        <p>Podstawiamy do równania 2):</p>
+        <div class="formula">19,608 - (10 + a) = 6a</div>
+        <div class="formula">19,608 - 10 - a = 6a</div>
+        <div class="formula">9,608 = 7a</div>
+        <div class="formula">a = 9,608 / 7 ≈ 1,3726 m/s²</div>
+        
+        <p>Obliczamy siłę naciągu:</p>
+        <div class="formula">N = 10 + 1,3726 ≈ 11,3726 N</div>
+        
+        <div class="result">a) Przyspieszenie: a ≈ 1,37 m/s²</div>
+        <div class="result">b) Siła naciągu: N ≈ 11,37 N</div>
+        
+        <p><strong>Wyjaśnienie poprawek:</strong></p>
+        <p>W poprzednim rozwiązaniu błędnie przyjęto kierunek ruchu dla m₁. Ponieważ m₂ = 6kg jest znacznie cięższe od m₁ = 1kg, 
+        a dodatkowo równia zmniejsza efektywną siłę ciężkości m₂ tylko o 50%, m₂ porusza się w dół równi, ciągnąc m₁ w górę. 
+        Dlatego poprawne równanie dla m₁ to: N - m₁g = m₁a (gdzie a jest dodatnie w górę dla m₁).</p>
+    </div>
+</div>
+        
+        <!-- Zadanie 6 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">6</div>
+                <h2 class="task-title">Ładunek przepływający przez przewodnik</h2>
+            </div>
+            <div class="task-content">
+                <p>Wyznacz wartość ładunku przepływającego przez poprzeczny przekrój przewodnika w czasie 3 pierwszych sekund, jeśli funkcja natężenia w czasie przedstawiona jest zależnością I(t)= t²+2.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Ładunek: Q = ∫I(t)dt</p>
+                <p>Q = ∫(t² + 2)dt od 0 do 3 = [ (1/3)t³ + 2t ] od 0 do 3 = ( (1/3)*27 + 2*3 ) - 0 = 9 + 6 = 15 C</p>
+                <p class="result">Ładunek: 15 C</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 7 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">7</div>
+                <h2 class="task-title">Praca wykonana przez zmienną siłę</h2>
+            </div>
+            <div class="task-content">
+                <p>Wyznacz wartość pracy wykonanej w układzie na drodze s=2 metrów, jeśli zależność siły od przesunięcia wyraża się funkcją F=2s² +3.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Praca: W = ∫F(s)ds</p>
+                <p>W = ∫(2s² + 3)ds od 0 do 2 = [ (2/3)s³ + 3s ] od 0 do 2 = ( (2/3)*8 + 3*2 ) - 0 = (16/3) + 6 ≈ 5,333 + 6 = 11,333 J</p>
+                <p class="result">Praca: ≈11,33 J</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 8 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">8</div>
+                <h2 class="task-title">Rzut pionowy</h2>
+            </div>
+            <div class="task-content">
+                <p>Rzucamy pionowo ciało o masie m=0,5kg z szybkością V₀=3m/s z wysokości. Na jaką maksymalną wysokość wzniesie się ciało? Jaką energię kinetyczną posiada to ciało w chwili uderzenia w Ziemię?</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Maksymalna wysokość (z zasady zachowania energii):</p>
+                <p>mgh = (1/2)mV₀² → h = V₀²/(2g) = 9/(2*10) = 0,45 m</p>
+                <p class="result">Maksymalna wysokość: 0,45 m</p>
+                
+                <p>Energia kinetyczna przy uderzeniu (ponownie z zasady zachowania energii):</p>
+                <p>E_k = (1/2)mV₀² = (1/2)*0,5*9 = 2,25 J</p>
+                <p class="result">Energia kinetyczna: 2,25 J</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 9 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">9</div>
+                <h2 class="task-title">Rzut ukośny - kąt rzutu</h2>
+            </div>
+            <div class="task-content">
+                <p>Pod jakim kątem należy rzucić ciało, aby:</p>
+                <p>- zasięg rzutu był maksymalny,</p>
+                <p>- zasięg rzutu równał się maksymalnej wysokości, na jaką wzniesie się ciało?</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>a) Zasięg maksymalny: R = (V₀²·sin2α)/g</p>
+                <p>Maksimum gdy sin2α = 1 → 2α = 90° → α = 45°</p>
+                <p class="result">Kąt dla maksymalnego zasięgu: 45°</p>
+                
+                <p>b) Zasięg równy maksymalnej wysokości:</p>
+                <p>Zasięg: R = (V₀²·sin2α)/g</p>
+                <p>Maks. wysokość: H = (V₀²·sin²α)/(2g)</p>
+                <p>Równanie: (V₀²·sin2α)/g = (V₀²·sin²α)/(2g)</p>
+                <p>Upraszczamy: 2·sin2α = sin²α</p>
+                <p>4·sinα·cosα = sin²α</p>
+                <p>Dzielimy obustronnie przez sinα (dla α≠0): 4·cosα = sinα → tanα = 4 → α = arctan(4) ≈ 76°</p>
+                <p class="result">Kąt: ≈76°</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 10 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">10</div>
+                <h2 class="task-title">Analiza wykresu prędkości</h2>
+            </div>
+            <div class="task-content">
+                <p>Na wykresie przedstawiono zależność wartości prędkości poruszającego się po linii prostej samochodu w funkcji czasu:</p>
+                <img src="10.png" alt="jeb się">
+                <p>a) Zapisz zależność V(t),</p>
+                <p>b) Oblicz drogę w pierwszej sekundzie ruchu,</p>
+                <p>c) Oblicz przyspieszenie w drugiej sekundzie ruchu.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>a) Z danych: t=0,v=0; t=1,v=1; t=2,v=4; t=3,v=9</p>
+                <p>V(t) = t² (ponieważ 0²=0, 1²=1, 2²=4, 3²=9)</p>
+                <p class="result">V(t) = t²</p>
+                
+                <p>b) Droga w pierwszej sekundzie: s = ∫V(t)dt od 0 do 1 = ∫t²dt = [ (1/3)t³ ] od 0 do 1 = 1/3 m</p>
+                <p class="result">Droga: ≈0,333 m</p>
+                
+                <p>c) Przyspieszenie: a(t) = dV/dt = 2t</p>
+                <p>W drugiej sekundzie (t=2): a=2*2=4 m/s²</p>
+                <p class="result">Przyspieszenie: 4 m/s²</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 11 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">11</div>
+                <h2 class="task-title">Masa ciała pod działaniem siły</h2>
+            </div>
+            <div class="task-content">
+                <p>Wyznacz masę ciała (poruszającego się po prostej), które pod działaniem siły F=30N w czasie t=5s zmienia swą szybkość z V₀=15 m/s do Vₖ=30 m/s.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Przyspieszenie: a = ΔV/Δt = (30-15)/5 = 15/5 = 3 m/s²</p>
+                <p>Z drugiej zasady dynamiki: F = m·a</p>
+                <p>30 = m·3 → m = 10 kg</p>
+                <p class="result">Masa ciała: 10 kg</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 12 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">12</div>
+                <h2 class="task-title">Praca przy przesuwaniu ciała</h2>
+            </div>
+            <div class="task-content">
+                <p>Jaką pracę trzeba wykonać, aby ciało o masie m=10kg w ciągu czasu t=4s (przyjmujemy V₀=0), przesunąć poziomo z przyspieszeniem a=5m/s²? Tarcie pomijamy.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Droga: s = (1/2)at² = (1/2)*5*16 = 40 m</p>
+                <p>Siła: F = m·a = 10*5 = 50 N</p>
+                <p>Praca: W = F·s = 50*40 = 2000 J</p>
+                <p class="result">Praca: 2000 J</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 13 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">13</div>
+                <h2 class="task-title">Obraz w soczewce skupiającej</h2>
+            </div>
+            <div class="task-content">
+                <p>W odległości 3cm przed soczewką skupiającą o ogniskowej f=5cm umieszczono przedmiot o wysokości 1,5cm. W jakiej odległości od soczewki powstanie obraz i jaka będzie jego wysokość?</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Równanie soczewki: 1/f = 1/x + 1/y</p>
+                <p>1/5 = 1/3 + 1/y</p>
+                <p>1/y = 1/5 - 1/3 = 3/15 - 5/15 = -2/15</p>
+                <p>y = -15/2 = -7,5 cm</p>
+                <p class="result">Obraz powstanie w odległości 7,5 cm po tej samej stronie co przedmiot (obraz pozorny)</p>
+                
+                <p>Powiększenie: p = y/x = (-7,5)/3 = -2,5</p>
+                <p>Wysokość obrazu: h' = |p|·h = 2,5·1,5 = 3,75 cm</p>
+                <p class="result">Wysokość obrazu: 3,75 cm</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 14 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">14</div>
+                <h2 class="task-title">Obwód elektryczny z rezystorami</h2>
+            </div>
+            <div class="task-content">
+                <p>W obwodzie jak na rysunku napięcie między końcami opornika R₁ wynosi 4V. Jaką wartość ma napięcie między końcami opornika R₂? Przyjmij R₁=2Ω, R₂=3Ω, R₃=3Ω. Rezystor R₂ i R₃ są podłączone równolegle, a R₁ jest podłączony do nich szeregowo.</p>
+                <img src="14.png" alt="tea who you yeah bunny">
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Rezystancja zastępcza R₂ i R₃ (równolegle):</p>
+                <p>1/R₂₃ = 1/3 + 1/3 = 2/3 → R₂₃ = 1,5 Ω</p>
+                <p>Całkowita rezystancja: R_c = R₁ + R₂₃ = 2 + 1,5 = 3,5 Ω</p>
+                
+                <p>Natężenie prądu: I = U₁/R₁ = 4/2 = 2 A</p>
+                
+                <p>Napięcie na R₂₃: U₂₃ = I·R₂₃ = 2·1,5 = 3 V</p>
+                <p>Ponieważ R₂ i R₃ są równolegle, to napięcie na nich jest takie same:</p>
+                <p class="result">Napięcie na R₂: 3 V</p>
+            </div>
+        </div>
+        
+        <!-- Zadanie 15 -->
+        <div class="task">
+            <div class="task-header">
+                <div class="task-number">15</div>
+                <h2 class="task-title">Oscylator harmoniczny</h2>
+            </div>
+            <div class="task-content">
+                <p>Równanie pewnego oscylatora harmonicznego ma postać: x(t)=0,3 cos(6πt). Oblicz okres tego ruchu, częstotliwość oraz maksymalną prędkość.</p>
+            </div>
+            <div class="solution">
+                <div class="section-title">Rozwiązanie:</div>
+                <p>Ogólna postać: x(t) = A·cos(ωt)</p>
+                <p>Z równania: A = 0,3 m, ω = 6π rad/s</p>
+                
+                <p>Okres: T = 2π/ω = 2π/(6π) = 1/3 s</p>
+                <p class="result">Okres: ≈0,333 s</p>
+                
+                <p>Częstotliwość: f = 1/T = 3 Hz</p>
+                <p class="result">Częstotliwość: 3 Hz</p>
+                
+                <p>Maksymalna prędkość: V_max = A·ω = 0,3·6π ≈ 0,3·18,84 ≈ 5,652 m/s</p>
+                <p class="result">Maksymalna prędkość: ≈5,65 m/s</p>
+            </div>
+        </div>
+        
+        <div class="note">
+            <p><strong>Uwaga:</strong> W rozwiązaniach przyjęto wartość przyspieszenia ziemskiego g = 10 m/s² dla uproszczenia obliczeń. W rzeczywistych warunkach wartość ta wynosi około 9,81 m/s².</p>
+        </div>
+    </div>
+</body>
+</html>

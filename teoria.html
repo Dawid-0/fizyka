@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odpowiedzi na zagadnienia egzaminacyjne - Fizyka dla Informatyków</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #34495e;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .toc {
+            background-color: var(--light);
+            padding: 20px;
+            border-bottom: 2px solid var(--secondary);
+        }
+        
+        .toc h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .toc-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .toc-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+        
+        .toc-item a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            display: block;
+        }
+        
+        .toc-item a:hover {
+            color: var(--secondary);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .question {
+            background: white;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--secondary);
+            padding: 20px;
+            border-radius: 0 5px 5px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .question h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .answer {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        .key-terms {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .key-terms h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .key-terms ul {
+            padding-left: 20px;
+        }
+        
+        .key-terms li {
+            margin-bottom: 5px;
+        }
+        
+        .analogy {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 3px solid #4caf50;
+        }
+        
+        .analogy h3 {
+            margin-bottom: 10px;
+            color: #2e7d32;
+        }
+        
+        .example {
+            background-color: #fff3e0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 3px solid #ff9800;
+        }
+        
+        .example h3 {
+            margin-bottom: 10px;
+            color: #ef6c00;
+        }
+        
+        .it-app {
+            background-color: #f3e5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 3px solid #9c27b0;
+        }
+        
+        .it-app h3 {
+            margin-bottom: 10px;
+            color: #7b1fa2;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--dark);
+            color: white;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Zagadnienia Egzaminacyjne</h1>
+            <div class="subtitle">Fizyka dla Informatyków - Kompletne odpowiedzi</div>
+        </header>
+        
+        <div class="toc">
+            <h2>Spis Treści</h2>
+            <div class="toc-grid">
+                <div class="toc-item"><a href="#q1">1. Wielkości fizyczne i jednostki w układzie SI</a></div>
+                <div class="toc-item"><a href="#q2">2. Kinematyka ruchu prostoliniowego i krzywoliniowego</a></div>
+                <div class="toc-item"><a href="#q3">3. Dynamika Newtona – zasady i ich zastosowanie</a></div>
+                <div class="toc-item"><a href="#q4">4. Ruch drgający i fale mechaniczne</a></div>
+                <div class="toc-item"><a href="#q5">5. Zasady zachowania: pędu, energii i momentu pędu</a></div>
+                <div class="toc-item"><a href="#q6">6. Grawitacja – prawo powszechnego ciążenia</a></div>
+                <div class="toc-item"><a href="#q7">7. Przewodnictwo cieplne, konwekcja i promieniowanie</a></div>
+                <div class="toc-item"><a href="#q8">8. Elektrostatyka – ładunki, prawo Coulomba i pole elektryczne</a></div>
+                <div class="toc-item"><a href="#q9">9. Prąd elektryczny i jego parametry</a></div>
+                <div class="toc-item"><a href="#q10">10. Obwody prądu stałego</a></div>
+                <div class="toc-item"><a href="#q11">11. Pole magnetyczne i siła Lorentza</a></div>
+                <div class="toc-item"><a href="#q12">12. Indukcja elektromagnetyczna</a></div>
+                <div class="toc-item"><a href="#q13">13. Fale elektromagnetyczne – natura i właściwości</a></div>
+                <div class="toc-item"><a href="#q14">14. Podstawy optyki falowej i geometrycznej</a></div>
+                <div class="toc-item"><a href="#q15">15. Dualizm korpuskularno-falowy</a></div>
+                <div class="toc-item"><a href="#q16">16. Model atomu i widma emisyjne</a></div>
+                <div class="toc-item"><a href="#q17">17. Fizyka półprzewodników</a></div>
+                <div class="toc-item"><a href="#q18">18. Podstawy fizyki kwantowej i jej znaczenie we współczesnej informatyce</a></div>
+            </div>
+        </div>
+        
+        <div class="content" id="questions">
+            <!-- Pytanie 1 -->
+            <div class="question" id="q1">
+                <h2>1. Wielkości fizyczne i jednostki w układzie SI</h2>
+                <div class="answer">
+                    <p>W fizyce mamy dwa podstawowe rodzaje wielkości:</p>
+                    <p><strong>Wielkości skalarne</strong> to takie, które mają tylko wartość (liczbę) i jednostkę. Przykłady: masa (kg), czas (s), temperatura (K).</p>
+                    <p><strong>Wielkości wektorowe</strong> mają wartość, jednostkę i kierunek. Przykłady: prędkość (m/s), siła (N), przyspieszenie (m/s²).</p>
+                    
+                    <div class="key-terms">
+                        <h3>Podstawowe jednostki SI:</h3>
+                        <ul>
+                            <li>Metr (m) - długość</li>
+                            <li>Kilogram (kg) - masa</li>
+                            <li>Sekunda (s) - czas</li>
+                            <li>Kelwin (K) - temperatura</li>
+                            <li>Amper (A) - natężenie prądu</li>
+                            <li>Kandela (cd) - światłość</li>
+                            <li>Mol (mol) - ilość substancji</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Przykładowe jednostki pochodne:</h3>
+                        <ul>
+                            <li>Newton (N) - siła (kg·m/s²)</li>
+                            <li>Dżul (J) - energia (N·m)</li>
+                            <li>Wat (W) - moc (J/s)</li>
+                            <li>Paskal (Pa) - ciśnienie (N/m²)</li>
+                            <li>Wolt (V) - napięcie (W/A)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="analogy">
+                        <h3>Dlaczego przekształcenia jednostek są ważne?</h3>
+                        <p>Wyobraź sobie, że kupujesz drewno na budowę - sprzedawca podaje długość w metrach, a Ty potrzebujesz w centymetrach. Podobnie w fizyce: musimy mieć spójne jednostki, aby obliczenia miały sens. Jeśli obliczasz prędkość, a masz odległość w km i czas w godzinach, musisz przekształcić na metry i sekundy, aby dostać wynik w m/s.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 2 -->
+            <div class="question" id="q2">
+                <h2>2. Kinematyka ruchu prostoliniowego i krzywoliniowego</h2>
+                <div class="answer">
+                    <p><strong>Ruch jednostajny prostoliniowy:</strong> To ruch ze stałą prędkością. Przykład: samochód jedzie 60 km/h bez zmiany prędkości.</p>
+                    <p><strong>Ruch jednostajnie przyspieszony:</strong> Prędkość zmienia się jednostajnie (stałe przyspieszenie). Przykład: spadające jabłko.</p>
+                    
+                    <div class="key-terms">
+                        <h3>Podstawowe pojęcia:</h3>
+                        <ul>
+                            <li><strong>Droga (s)</strong> - długość toru ruchu (m)</li>
+                            <li><strong>Prędkość (v)</strong> - zmiana drogi w czasie (m/s)</li>
+                            <li><strong>Przyspieszenie (a)</strong> - zmiana prędkości w czasie (m/s²)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="analogy">
+                        <h3>Analiza wykresów:</h3>
+                        <p><strong>Wykres drogi od czasu</strong> w ruchu jednostajnym to linia prosta. Nachylenie tej linii to prędkość.</p>
+                        <p><strong>Wykres prędkości od czasu</strong> w ruchu jednostajnie przyspieszonym to linia prosta. Nachylenie to przyspieszenie, a pole pod wykresem to droga.</p>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>Ruch po okręgu</h3>
+                        <p>To ruch krzywoliniowy, w którym ciało porusza się po okręgu. Przykład: karuzela. W tym ruchu występuje przyspieszenie dośrodkowe, które zmienia kierunek prędkości, ale nie jej wartość.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 3 -->
+            <div class="question" id="q3">
+                <h2>3. Dynamika Newtona – zasady i ich zastosowanie</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Trzy zasady dynamiki Newtona:</h3>
+                        <ul>
+                            <li><strong>I zasada (bezwładności):</strong> Ciało pozostaje w spoczynku lub ruchu jednostajnym prostoliniowym, jeśli siły działające na nie równoważą się.</li>
+                            <li><strong>II zasada:</strong> Przyspieszenie ciała jest wprost proporcjonalne do siły wypadkowej, a odwrotnie proporcjonalne do masy (F = m·a).</li>
+                            <li><strong>III zasada (akcji i reakcji):</strong> Jeśli ciało A działa na ciało B siłą, to ciało B działa na ciało A siłą o tej samej wartości, przeciwnym kierunku.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Kluczowe pojęcia:</h3>
+                        <ul>
+                            <li><strong>Siła (F)</strong> - miara oddziaływania (N)</li>
+                            <li><strong>Masa (m)</strong> - miara bezwładności ciała (kg)</li>
+                            <li><strong>Bezwładność</strong> - tendencja ciała do zachowania stanu ruchu</li>
+                            <li><strong>Tarcie</strong> - siła przeciwstawiająca się ruchowi</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>Zastosowanie w analizie ruchu:</h3>
+                        <p>Zasady dynamiki pozwalają przewidzieć ruch ciał. Np. aby obliczyć, jak szybko samochód przyspieszy, używamy F = m·a. Jeśli znamy siłę silnika i masę auta, możemy obliczyć przyspieszenie.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 4 -->
+            <div class="question" id="q4">
+                <h2>4. Ruch drgający i fale mechaniczne</h2>
+                <div class="answer">
+                    <p><strong>Ruch harmoniczny</strong> to ruch okresowy, np. huśtawka czy ciężarek na sprężynie.</p>
+                    
+                    <div class="key-terms">
+                        <h3>Cechy ruchu harmonicznego:</h3>
+                        <ul>
+                            <li><strong>Amplituda (A)</strong> - maksymalne wychylenie</li>
+                            <li><strong>Okres (T)</strong> - czas jednego pełnego drgania</li>
+                            <li><strong>Częstotliwość (f)</strong> - liczba drgań w sekundzie (f = 1/T)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="analogy">
+                        <h3>Wahadło matematyczne</h3>
+                        <p>To idealne wahadło - ciężka kulka zawieszona na nieważkiej nici. Jego okres zależy tylko od długości nici i przyspieszenia grawitacyjnego: T = 2π√(l/g)</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Fale mechaniczne:</h3>
+                        <p>To rozchodzące się w ośrodku zaburzenie (np. fale na wodzie, dźwięk).</p>
+                        <ul>
+                            <li><strong>Prędkość fali</strong> - zależy od ośrodka (np. dźwięk w powietrzu: ~340 m/s)</li>
+                            <li><strong>Interferencja</strong> - nakładanie się fal (wzmocnienie lub wygaszenie)</li>
+                            <li><strong>Fale stojące</strong> - powstają gdy fale o tej samej częstotliwości biegną w przeciwnych kierunkach</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 5 -->
+            <div class="question" id="q5">
+                <h2>5. Zasady zachowania: pędu, energii i momentu pędu</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Zasada zachowania pędu:</h3>
+                        <p>W układzie izolowanym całkowity pęd (p = m·v) jest stały. To ważne w zderzeniach:</p>
+                        <ul>
+                            <li><strong>Zderzenie sprężyste</strong> - energia kinetyczna jest zachowana (np. kule bilardowe)</li>
+                            <li><strong>Zderzenie niesprężyste</strong> - energia kinetyczna nie jest zachowana (np. samochody po kolizji)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Zasada zachowania energii:</h3>
+                        <p>Energia całkowita w układzie izolowanym jest stała. Formy energii:</p>
+                        <ul>
+                            <li><strong>Energia kinetyczna</strong> - związana z ruchem (E<sub>k</sub> = ½mv²)</li>
+                            <li><strong>Energia potencjalna</strong> - związana z położeniem (np. grawitacyjna E<sub>p</sub> = mgh)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="analogy">
+                        <h3>Moment pędu:</h3>
+                        <p>To "pęd w ruchu obrotowym" (L = I·ω). W układzie izolowanym moment pędu jest zachowany. Przykład: łyżwiarz przyciągający ręce - kręci się szybciej.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 6 -->
+            <div class="question" id="q6">
+                <h2>6. Grawitacja – prawo powszechnego ciążenia</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Prawo Newtona:</h3>
+                        <p>Dwa ciała przyciągają się siłą proporcjonalną do iloczynu mas i odwrotnie proporcjonalną do kwadratu odległości:</p>
+                        <p style="text-align: center; font-weight: bold; margin: 15px 0;">F = G · (m₁·m₂)/r²</p>
+                        <p>gdzie G to stała grawitacji (6.67430 × 10<sup>-11</sup> N·m²/kg²)</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Kluczowe pojęcia:</h3>
+                        <ul>
+                            <li><strong>Siła grawitacyjna</strong> - przyciąganie między masami</li>
+                            <li><strong>Przyspieszenie grawitacyjne (g)</strong> - ~9.81 m/s² na Ziemi</li>
+                            <li><strong>Energia potencjalna grawitacji</strong> - E<sub>p</sub> = -G·(m₁·m₂)/r</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>Ruch planet i satelitów</h3>
+                        <p>Siła grawitacji utrzymuje planety na orbitach. Satelity krążące wokół Ziemi są w stanie nieważkości, ponieważ spadają w kierunku Ziemi, ale z taką prędkością, że "trafiają w próżnię".</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 7 -->
+            <div class="question" id="q7">
+                <h2>7. Przewodnictwo cieplne, konwekcja i promieniowanie</h2>
+                <div class="answer">
+                    <p>To trzy mechanizmy transportu ciepła:</p>
+                    
+                    <div class="key-terms">
+                        <h3>Przewodnictwo cieplne:</h3>
+                        <p>Przenoszenie ciepła przez bezpośredni kontakt (np. metalowa łyżka w gorącej zupie). Opisuje je <strong>prawo Fouriera</strong>: strumień ciepła jest proporcjonalny do gradientu temperatury.</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Konwekcja:</h3>
+                        <p>Przenoszenie ciepła przez ruch materii (np. ogrzewanie powietrza w pomieszczeniu).</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Promieniowanie:</h3>
+                        <p>Przenoszenie ciepła przez fale elektromagnetyczne (np. ciepło od Słońca).</p>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Zastosowanie w technice komputerowej:</h3>
+                        <p>Chłodzenie procesorów wykorzystuje wszystkie trzy mechanizmy:</p>
+                        <ul>
+                            <li><strong>Przewodzenie</strong> - pasty termiczne poprawiające kontakt procesora z chłodzeniem</li>
+                            <li><strong>Konwekcja</strong> - wentylatory wymuszające przepływ powietrza</li>
+                            <li><strong>Promieniowanie</strong> - radiator oddający ciepło do otoczenia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 8 -->
+            <div class="question" id="q8">
+                <h2>8. Elektrostatyka – ładunki, prawo Coulomba i pole elektryczne</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Ładunek elektryczny:</h3>
+                        <p>Własność materii powodująca oddziaływanie elektromagnetyczne. Istnieją ładunki dodatnie (+) i ujemne (-).</p>
+                        <p><strong>Prawo zachowania ładunku:</strong> Całkowity ładunek w układzie izolowanym jest stały.</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Prawo Coulomba:</h3>
+                        <p>Siła między dwoma ładunkami punktowymi jest proporcjonalna do iloczynu ładunków i odwrotnie proporcjonalna do kwadratu odległości:</p>
+                        <p style="text-align: center; font-weight: bold; margin: 15px 0;">F = k · (q₁·q₂)/r²</p>
+                        <p>gdzie k to stała Coulomba (8.99 × 10<sup>9</sup> N·m²/C²)</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Pole elektryczne:</h3>
+                        <ul>
+                            <li><strong>Natężenie pola (E)</strong> - siła na jednostkowy ładunek (N/C)</li>
+                            <li><strong>Linie pola</strong> - pokazują kierunek siły działającej na ładunek dodatni</li>
+                            <li><strong>Potencjał elektryczny (V)</strong> - energia potencjalna na jednostkowy ładunek (V)</li>
+                            <li><strong>Napięcie (U)</strong> - różnica potencjałów (V)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 9 -->
+            <div class="question" id="q9">
+                <h2>9. Prąd elektryczny i jego parametry</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Podstawowe parametry:</h3>
+                        <ul>
+                            <li><strong>Natężenie prądu (I)</strong> - ilość ładunku przepływającego w jednostce czasu (A)</li>
+                            <li><strong>Napięcie (U)</strong> - różnica potencjałów powodująca przepływ prądu (V)</li>
+                            <li><strong>Opór (R)</strong> - miara trudności przepływu prądu (Ω)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Prawo Ohma:</h3>
+                        <p style="text-align: center; font-weight: bold; margin: 15px 0;">I = U / R</p>
+                        <p>Natężenie prądu jest wprost proporcjonalne do napięcia, a odwrotnie proporcjonalne do oporu.</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Praca i moc prądu:</h3>
+                        <ul>
+                            <li><strong>Praca prądu (W)</strong> - W = U·I·t (dżule)</li>
+                            <li><strong>Moc (P)</strong> - P = U·I (waty)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>Opór a temperatura:</h3>
+                        <p>W większości metali opór rośnie z temperaturą. W półprzewodnikach opór maleje z temperaturą.</p>
+                        <p><strong>Opór właściwy (ρ)</strong> - charakterystyka materiału, zależna od jego budowy.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 10 -->
+            <div class="question" id="q10">
+                <h2>10. Obwody prądu stałego</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Łączenie oporników:</h3>
+                        <ul>
+                            <li><strong>Szeregowe:</strong> R<sub>całk</sub> = R₁ + R₂ + ...</li>
+                            <li><strong>Równoległe:</strong> 1/R<sub>całk</sub> = 1/R₁ + 1/R₂ + ...</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Prawa Kirchhoffa:</h3>
+                        <ul>
+                            <li><strong>Prawo prądowe:</strong> Suma prądów wpływających do węzła = suma prądów wypływających</li>
+                            <li><strong>Prawo napięciowe:</strong> Suma spadków napięć w oczku = suma sił elektromotorycznych</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Obwody RC w informatyce:</h3>
+                        <p>Obwody z rezystorem (R) i kondensatorem (C) są używane jako:</p>
+                        <ul>
+                            <li>Filtry w układach elektronicznych</li>
+                            <li>Układy czasowe (np. timery)</li>
+                            <li>Układy kształtujące sygnały w komunikacji</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 11 -->
+            <div class="question" id="q11">
+                <h2>11. Pole magnetyczne i siła Lorentza</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Źródła pola magnetycznego:</h3>
+                        <ul>
+                            <li>Magnesy trwałe</li>
+                            <li>Prąd elektryczny (elektromagnesy)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Podstawowe pojęcia:</h3>
+                        <ul>
+                            <li><strong>Linie pola magnetycznego</strong> - pokazują kierunek pola</li>
+                            <li><strong>Indukcja magnetyczna (B)</strong> - miara "siły" pola (T)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Siła Lorentza:</h3>
+                        <p>Siła działająca na ładunek poruszający się w polu magnetycznym:</p>
+                        <p style="text-align: center; font-weight: bold; margin: 15px 0;">F = q·v·B·sinθ</p>
+                        <p>gdzie θ to kąt między wektorami v i B.</p>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>Ruch cząstki w polu magnetycznym:</h3>
+                        <p>Jeśli ładunek wlatuje prostopadle do pola magnetycznego, porusza się po okręgu. To zjawisko wykorzystuje się w akceleratorach cząstek i spektrometrach masowych.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 12 -->
+            <div class="question" id="q12">
+                <h2>12. Indukcja elektromagnetyczna</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Podstawowe prawa:</h3>
+                        <ul>
+                            <li><strong>Prawo Faradaya:</strong> Zmiana strumienia magnetycznego indukuje SEM (siłę elektromotoryczną)</li>
+                            <li><strong>Prawo Lenza:</strong> Kierunek indukowanego prądu przeciwstawia się zmianie, która go wywołała</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>Powstawanie SEM:</h3>
+                        <p>Gdy magnes porusza się względem cewki lub odwrotnie, w cewce indukuje się napięcie.</p>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Zastosowania:</h3>
+                        <ul>
+                            <li><strong>Prądnice</strong> - zamieniają energię mechaniczną na elektryczną</li>
+                            <li><strong>Transformatory</strong> - zmieniają napięcie prądu przemiennego</li>
+                            <li><strong>Pamięć magnetyczna</strong> - dyski twarde wykorzystują zapis magnetyczny</li>
+                            <li><strong>Zasilacze</strong> - transformatory w zasilaczach zmieniają napięcie sieciowe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 13 -->
+            <div class="question" id="q13">
+                <h2>13. Fale elektromagnetyczne – natura i właściwości</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Natura fal EM:</h3>
+                        <p>To rozchodzące się w przestrzeni zaburzenia pola elektrycznego i magnetycznego. Nie potrzebują ośrodka - mogą rozchodzić się w próżni.</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Podstawowe właściwości:</h3>
+                        <ul>
+                            <li><strong>Prędkość w próżni</strong> - c ≈ 3×10<sup>8</sup> m/s</li>
+                            <li><strong>Długość fali (λ)</strong> - odległość między grzbietami fali</li>
+                            <li><strong>Częstotliwość (f)</strong> - liczba drgań na sekundę, c = λ·f</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Widmo elektromagnetyczne:</h3>
+                        <p>Od fal radiowych (długie λ) do promieni gamma (krótkie λ):</p>
+                        <p>Radiowe → Mikrofale → Podczerwień → Światło widzialne → Ultrafiolet → Rentgenowskie → Gamma</p>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Zastosowania w technologii:</h3>
+                        <ul>
+                            <li><strong>Wi-Fi i Bluetooth</strong> - wykorzystują fale radiowe</li>
+                            <li><strong>RFID</strong> - identyfikacja radiowa (np. karty dostępu)</li>
+                            <li><strong>Telekomunikacja</strong> - przekaz danych na odległość</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 14 -->
+            <div class="question" id="q14">
+                <h2>14. Podstawy optyki falowej i geometrycznej</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Optyka geometryczna:</h3>
+                        <p>Zajmuje się rozchodzeniem światła jako promieni.</p>
+                        <ul>
+                            <li><strong>Prawo odbicia:</strong> Kąt padania = kąt odbicia</li>
+                            <li><strong>Prawo załamania:</strong> n₁·sinθ₁ = n₂·sinθ₂ (prawo Snella)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Optyka falowa:</h3>
+                        <p>Zajmuje się zjawiskami wynikającymi z falowej natury światła.</p>
+                        <ul>
+                            <li><strong>Dyfrakcja</strong> - uginanie fal na przeszkodach</li>
+                            <li><strong>Interferencja</strong> - nakładanie się fal</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>Zwierciadła i soczewki:</h3>
+                        <ul>
+                            <li><strong>Zwierciadła</strong> - tworzą obrazy poprzez odbicie światła</li>
+                            <li><strong>Soczewki</strong> - skupiają lub rozpraszają światło dzięki załamaniu</li>
+                            <li><strong>Powstawanie obrazów</strong> - rzeczywistych lub pozornych</li>
+                            <li><strong>Powiększenie</strong> - stosunek rozmiaru obrazu do rozmiaru przedmiotu</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Zastosowania w technice obrazowania:</h3>
+                        <p>Mikroskopy, teleskopy, aparaty fotograficzne, skanery, systemy laserowe.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 15 -->
+            <div class="question" id="q15">
+                <h2>15. Dualizm korpuskularno-falowy</h2>
+                <div class="answer">
+                    <p>To koncepcja, że światło i materia mają zarówno właściwości falowe, jak i cząsteczkowe.</p>
+                    
+                    <div class="key-terms">
+                        <h3>Zjawiska potwierdzające:</h3>
+                        <ul>
+                            <li><strong>Zjawisko fotoelektryczne:</strong> Światło wybija elektrony z metalu (efekt cząsteczkowy)</li>
+                            <li><strong>Dyfrakcja elektronów:</strong> Elektrony uginają się jak fale</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="analogy">
+                        <h3>Hipoteza de Broglie'a:</h3>
+                        <p>Każdej cząstce o pędzie p można przypisać falę o długości:</p>
+                        <p style="text-align: center; font-weight: bold; margin: 15px 0;">λ = h / p</p>
+                        <p>gdzie h to stała Plancka.</p>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Znaczenie w elektronice i fotonice:</h3>
+                        <p>Dualizm jest podstawą:</p>
+                        <ul>
+                            <li>Fotodiod i ogniw słonecznych (efekt fotoelektryczny)</li>
+                            <li>Mikroskopii elektronowej (falowa natura elektronów)</li>
+                            <li>Technologii laserowych</li>
+                            <li>Rozwoju układów optoelektronicznych</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 16 -->
+            <div class="question" id="q16">
+                <h2>16. Model atomu i widma emisyjne</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Budowa atomu:</h3>
+                        <p>Jądro (protony+neutrony) otoczone chmurą elektronów.</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Modele atomu:</h3>
+                        <ul>
+                            <li><strong>Model Rutherforda:</strong> "Układ planetarny" - elektrony krążą wokół jądra</li>
+                            <li><strong>Model Bohra:</strong> Elektrony krążą po określonych orbitach; przejścia między orbitami powodują emisję lub absorpcję fotonów</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="analogy">
+                        <h3>Skowantowanie poziomów energetycznych:</h3>
+                        <p>Elektrony mogą mieć tylko określone energie, nie dowolne - podobnie jak schody, na których możesz stać, a nie na całej wysokości.</p>
+                    </div>
+                    
+                    <div class="example">
+                        <h3>Widma emisyjne:</h3>
+                        <p>Atomy emitują światło o określonych długościach fal (linie widmowe), gdy elektrony przechodzą z wyższych na niższe orbity. Każdy pierwiastek ma unikalne widmo - to jego "odcisk palca".</p>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Znaczenie w spektroskopii:</h3>
+                        <p>Analiza widm pozwala określić skład chemiczny substancji (np. w astronomii - skład gwiazd).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 17 -->
+            <div class="question" id="q17">
+                <h2>17. Fizyka półprzewodników</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Półprzewodniki:</h3>
+                        <p>Materiały o oporności pośredniej między przewodnikami a izolatorami (np. krzem, german).</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Rodzaje przewodnictwa:</h3>
+                        <ul>
+                            <li><strong>Typ n</strong> - nośniki większościowe to elektrony (dodanie domieszek donorowych)</li>
+                            <li><strong>Typ p</strong> - nośniki większościowe to dziury (dodanie domieszek akceptorowych)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Złącze p-n:</h3>
+                        <p>Granica między półprzewodnikiem typu p i n. Podstawowy element elektroniki:</p>
+                        <ul>
+                            <li><strong>Dioda</strong> - przewodzi prąd tylko w jednym kierunku</li>
+                            <li><strong>Tranzystor</strong> - wzmacniacz lub przełącznik</li>
+                            <li><strong>LED</strong> - dioda emitująca światło</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Zastosowanie:</h3>
+                        <p>Wszystkie współczesne układy elektroniczne i cyfrowe: procesory, pamięci, czujniki, wyświetlacze, ogniwa fotowoltaiczne.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pytanie 18 -->
+            <div class="question" id="q18">
+                <h2>18. Podstawy fizyki kwantowej i jej znaczenie we współczesnej informatyce</h2>
+                <div class="answer">
+                    <div class="key-terms">
+                        <h3>Zasada nieoznaczoności Heisenberga:</h3>
+                        <p>Nie można jednocześnie dokładnie zmierzyć pędu i położenia cząstki:</p>
+                        <p style="text-align: center; font-weight: bold; margin: 15px 0;">Δx · Δp ≥ h/(4π)</p>
+                    </div>
+                    
+                    <div class="key-terms">
+                        <h3>Funkcja falowa (Ψ):</h3>
+                        <p>Opisuje stan kwantowy cząstki. Kwadrat modułu |Ψ|² określa prawdopodobieństwo znalezienia cząstki w danym miejscu.</p>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Komputery kwantowe:</h3>
+                        <ul>
+                            <li><strong>Kubity</strong> - kwantowe bity, które mogą być w superpozycji stanów 0 i 1</li>
+                            <li><strong>Superpozycja</strong> - kubit może być jednocześnie w stanie 0 i 1</li>
+                            <li><strong>Splątanie</strong> - stan, w którym kubity są powiązane, niezależnie od odległości</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="it-app">
+                        <h3>Znaczenie w informatyce:</h3>
+                        <p>Komputery kwantowe mogą potencjalnie rozwiązywać pewne problemy (np. faktoryzacja dużych liczb) znacznie szybciej niż klasyczne komputery, co ma implikacje dla kryptografii i optymalizacji.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Kompletne odpowiedzi na zagadnienia egzaminacyjne z fizyki dla informatyków | © 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
