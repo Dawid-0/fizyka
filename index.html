@@ -3,92 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nawigacja</title>
+    <title>Egzamin - Architektura Komputerów i Systemy Operacyjne</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-        }
-        
-        h1 {
-            color: white;
-            margin-bottom: 40px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            font-size: 2.2rem;
-        }
-        
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 25px;
-            margin: 15px 0;
-            background: white;
-            border-radius: 15px;
-            text-decoration: none;
-            color: #333;
-            font-size: 1.8rem;
-            font-weight: 600;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-            background: #f8f9fa;
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-        }
-        
-        .teoria {
-            background: #ff9a9e;
-            color: white;
-        }
-        
-        .zadania {
-            background: #a1c4fd;
-            color: white;
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-                margin-bottom: 30px;
-            }
-            
-            .btn {
-                font-size: 1.5rem;
-                padding: 22px;
-            }
-        }
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; color:white; background-color: darkgray;}
+        h1 { color: white; text-align: center; }
+        h2 { color: #3498db; border-bottom: 2px solid #3498db; padding-bottom: 5px; margin-top: 25px; }
+        h3 { color: #16a085; }
+        .group { background-color: #121212; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #3498db; }
+        .question { margin-bottom: 15px; }
+        .answer { margin-left: 20px; margin-bottom: 15px; }
+        .highlight { background-color: #cdccff; padding: 2px 4px; border-radius: 3px; }
+        .note { font-style: italic; color: #7f8c8d; margin-top: 5px; }
+        ul, ol { margin-top: 5px; margin-bottom: 10px; }
+        li { margin-bottom: 5px; }
+        code { background-color: #1a0d0d; padding: 1px 4px; border-radius: 3px; font-family: monospace; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Wybierz sekcję</h1>
-        <a href="teoria.html" class="btn teoria">Teoria</a>
-        <a href="zadania.html" class="btn zadania">Zadania</a>
+    <h1>Przygotowanie do Egzaminu: Architektura Komputerów i Systemy Operacyjne</h1>
+    <p>Pytania pogrupowane tematycznie z odpowiedziami.</p>
+
+    <!-- Grupa 1: Podstawowa Architektura Komputera i Cykl Rozkazowy -->
+    <div class="group">
+        <h2>Grupa 1: Podstawowa Architektura Komputera i Cykl Rozkazowy</h2>
+
+        <div class="question">
+            <h3>1. Schemat logiczny budowy komputera (Model von Neumanna) & Charakterystyka elementów i wykonanie instrukcji x = a + b</h3>
+            <div class="answer">
+                <p><strong>Schemat:</strong> Głównymi elementami są:</p>
+                <ul>
+                    <li><strong>CPU (Procesor):</strong> Wykonuje instrukcje (ALU - jednostka arytmetyczno-logiczna, CU - jednostka sterująca, Rejestry).</li>
+                    <li><strong>Pamięć Główna (RAM):</strong> Przechowuje programy i dane podczas wykonywania.</li>
+                    <li><strong>Urządzenia Wejścia/Wyjścia (I/O):</strong> Komunikacja ze światem zewnętrznym (klawiatura, mysz, monitor, dysk).</li>
+                    <li><strong>Szyna Systemowa (Bus):</strong> Łączy wszystkie elementy, przenosząc:
+                        <ul>
+                            <li><strong>Dane:</strong> Informacje między komponentami.</li>
+                            <li><strong>Adresy:</strong> Lokalizacje w pamięci lub przestrzeni I/O.</li>
+                            <li><strong>Sterowanie:</strong> Sygnały synchronizujące pracę (np. odczyt, zapis, żądanie przerwania).</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p><strong>Wykonanie `x = a + b` (a, b w pamięci, x wynik):</strong></p>
+                <ol>
+                    <li>CPU pobiera instrukcję dodawania (z pamięci, wskazywaną przez PC - licznik rozkazów).</li>
+                    <li>CU dekoduje instrukcję (rozumie, że to dodawanie, potrzebuje adresów `a` i `b`).</li>
+                    <li>CPU pobiera wartość spod adresu `a` (przez szynę adresową i danych) do rejestru (np. R1).</li>
+                    <li>CPU pobiera wartość spod adresu `b` do innego rejestru (np. R2).</li>
+                    <li>ALU dodaje wartości z rejestrów R1 i R2.</li>
+                    <li>CPU zapisuje wynik z ALU (np. rejestr R3) pod adres `x` w pamięci.</li>
+                    <li>PC jest zwiększany, wskazując następną instrukcję.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>2. Cykl Rozkazowy & Miejsce jądra OS. Potrzeba istnienia OS.</h3>
+            <div class="answer">
+                <p><strong>Cykl Rozkazowy (Podstawowe Fazy):</strong></p>
+                <ol>
+                    <li><strong>Pobranie (Fetch):</strong> Pobranie instrukcji z pamięci (adres z PC) do rejestru instrukcji (IR). Zwiększenie PC.</li>
+                    <li><strong>Dekodowanie (Decode):</strong> Rozpoznanie typu instrukcji i operandów przez CU.</li>
+                    <li><strong>Wykonanie (Execute):</strong> ALU wykonuje operację, dostęp do pamięci lub I/O.</li>
+                </ol>
+                <p><strong>Miejsce jądra OS:</strong> Jądro OS wykonuje się w <span class="highlight">fazie wykonania (Execute)</span> cyklu rozkazowego procesu użytkownika, gdy:
+                    <ul>
+                        <li>Wystąpi <strong>wywołanie systemowe (system call)</strong>: Proces jawnie żąda usługi jądra (np. otwarcie pliku). CU przełącza CPU w tryb uprzywilejowany i skacze do procedury jądra.</li>
+                        <li>Wystąpi <strong>przerwanie (interrupt)</strong>: Sprzęt (np. timer, dysk) lub wyjątek (błąd) wymusza natychmiastową reakcję jądra. CU zapisuje kontekst bieżącego procesu, przełącza w tryb jądra i skacze do procedury obsługi przerwania.</li>
+                    </ul>
+                </p>
+                <p><strong>Potrzeba OS (na podstawie von Neumanna i cyklu):</strong> Bez OS każdy program musiałby bezpośrednio zarządzać sprzętem (pamięcią, dyskiem, CPU), prowadząc do chaosu, błędów i braku bezpieczeństwa. OS abstrahuje sprzęt, zarządza zasobami (CPU, pamięć, I/O), zapewnia ochronę i współbieżność.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>3. Wejście/Wyjście: PIO vs DMA</h3>
+            <div class="answer">
+                <p><strong>PIO (Programmed I/O):</strong></p>
+                <ul>
+                    <li><strong>Schemat:</strong> CPU bezpośrednio steruje transferem danych (porty I/O).</li>
+                    <li><strong>Działanie:</strong> CPU inicjuje operację, następnie w pętli (czytając status urządzenia) czeka na gotowość i przesyła KAŻDĄ porcję danych (bajt/słowo) między rejestrem CPU a urządzeniem. <span class="highlight">Bardzo obciąża CPU.</span></li>
+                </ul>
+                <p><strong>DMA (Direct Memory Access):</strong></p>
+                <ul>
+                    <li><strong>Schemat:</strong> Dodany specjalizowany kontroler DMA.</li>
+                    <li><strong>Działanie:</strong>
+                        <ol>
+                            <li>CPU konfiguruje DMA (adres pamięci start, ilość danych, urządzenie, kierunek).</li>
+                            <li>CPU zwalnia się do innych zadań.</li>
+                            <li>DMA przejmuje kontrolę nad szyną.</li>
+                            <li>DMA bezpośrednio transferuje dane między pamięcią a urządzeniem peryferyjnym.</li>
+                            <li>Po zakończeniu transferu, DMA sygnalizuje CPU przerwaniem.</li>
+                        </ol>
+                    </li>
+                    <li><strong>Zaleta:</strong> Znacznie odciąża CPU, umożliwiając mu wykonywanie kodu podczas transferu.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grupa 2: System Operacyjny - Definicje, Funkcje, Klasyfikacja -->
+    <div class="group">
+        <h2>Grupa 2: System Operacyjny - Definicje, Funkcje, Klasyfikacja</h2>
+
+        <div class="question">
+            <h3>1. System Operacyjny: Definicja, Struktura, Zadania</h3>
+            <div class="answer">
+                <p><strong>Definicja:</strong> Program pośredniczący między użytkownikiem/aplikacją a sprzętem komputera. Zarządza zasobami i zapewnia środowisko do uruchamiania programów.</p>
+                <p><strong>Struktura/Lokalizacja:</strong></p>
+                <ul>
+                    <li><strong>Jądro (Kernel):</strong> Rdzeń OS działający w trybie uprzywilejowanym. Bezpośrednio zarządza sprzętem (CPU, pamięć, I/O), procesami, komunikacją.</li>
+                    <li><strong>Powłoka (Shell):</strong> Interfejs użytkownika (tekstowy - CLI, graficzny - GUI) do komunikacji z jądrem.</li>
+                    <li><strong>System Plików:</strong> Organizuje przechowywanie danych na nośnikach.</li>
+                    <li><strong>Biblioteki Systemowe:</strong> Udostępniają aplikacjom usługi jądra (np. przez API).</li>
+                    <li><strong>Programy Narzędziowe:</strong> Dodatkowe programy (np. edytory, kompilatory).</li>
+                    <li><strong>Lokalizacja:</strong> Leży "powyżej" sprzętu, a "poniżej" aplikacji użytkownika i powłoki.</li>
+                </ul>
+                <p><strong>Główne Zadania/Funkcje:</strong></p>
+                <ul>
+                    <li><strong>Zarządzanie Procesami:</strong> Tworzenie, usuwanie, wstrzymywanie, wznowienie; planowanie użycia CPU; synchronizacja i komunikacja międzyprocesowa (IPC).</li>
+                    <li><strong>Zarządzanie Pamięcią:</strong> Śledzenie zajętej/wolnej pamięci; alokacja i zwalnianie; obsługa pamięci wirtualnej.</li>
+                    <li><strong>Zarządzanie Urządzeniami I/O:</strong> Abstrakcja sprzętu (sterowniki); buforowanie; planowanie dostępu (np. do dysku); obsługa przerwań.</li>
+                    <li><strong>Zarządzanie Systemem Plików:</strong> Tworzenie/kasowanie plików i katalogów; operacje na plikach; mapowanie na nośniki fizyczne; kontrola dostępu.</li>
+                    <li><strong>Ochrona i Bezpieczeństwo:</strong> Kontrola dostępu do zasobów; izolacja procesów; uwierzytelnianie użytkowników.</li>
+                    <li><strong>Obsługa Sieci (często):</strong> Komunikacja między systemami.</li>
+                </ul>
+                <p><strong>Zarządzanie zasobami:</strong> Polega na efektywnym i sprawiedliwym przydzielaniu ograniczonych zasobów sprzętowych (CPU, pamięć, czas dysku, porty I/O) i logicznych (pliki, semafory) pomiędzy konkurujące ze sobą procesy, zapewniając jednocześnie ochronę i unikając zakleszczeń.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>2. Klasyfikacja Systemów Operacyjnych (6 kryteriów)</h3>
+            <div class="answer">
+                <ol>
+                    <li><strong>Liczba użytkowników:</strong>
+                        <ul>
+                            <li><em>Jednoużytkownikowe (Single-user):</em> Tylko jeden użytkownik na raz (np. klasyczny MS-DOS).</li>
+                            <li><em>Wieloużytkownikowe (Multi-user):</em> Wielu użytkowników jednocześnie (np. Unix, Linux, Windows Server). <span class="highlight">Zastosowanie:</span> Serwery, mainframe.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Liczba zadań:</strong>
+                        <ul>
+                            <li><em>Jednozadaniowe (Single-tasking):</em> Tylko jeden program użytkownika na raz (np. MS-DOS).</li>
+                            <li><em>Wielozadaniowe (Multi-tasking):</em> Wiele programów działa "jednocześnie" (współbieżnie) poprzez przełączanie kontekstu CPU. <span class="highlight">Zastosowanie:</span> Wszystkie nowoczesne systemy.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Tryb przetwarzania:</strong>
+                        <ul>
+                            <li><em>Wsadowe (Batch):</em> Programy uruchamiane grupowo bez interakcji użytkownika. <span class="highlight">Zastosowanie:</span> Obliczenia naukowe, przetwarzanie danych.</li>
+                            <li><em>Interakcyjne (Interactive):</em> Bezpośrednia interakcja użytkownika (terminal). <span class="highlight">Zastosowanie:</span> Systemy osobiste, serwery.</li>
+                            <li><em>Systemy Czasu Rzeczywistego (RTOS):</em> Gwarantują reakcję w określonym, krótkim czasie. <span class="highlight">Zastosowanie:</span> Sterowanie przemysłowe, systemy wbudowane.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Architektura jądra:</strong>
+                        <ul>
+                            <li><em>Monolityczne:</em> Wszystkie funkcje jądra w jednym dużym module (np. Linux - modułowalny).</li>
+                            <li><em>Mikrojądro:</em> Minimalne jądro (komunikacja, wątki, niskopoziomowa pamięć), reszta usług w przestrzeni użytkownika (serwery) (np. Minix, QNX).</li>
+                            <li><em>Hybrydowe:</em> Połączenie idei (np. Windows NT, macOS X). <span class="highlight">Zastosowanie:</span> Różne wymagania wydajnościowe, niezawodności, elastyczności.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Przeznaczenie sprzętowe:</strong>
+                        <ul>
+                            <li><em>Serwerowe:</em> Optymalizacja pod kątem obsługi wielu klientów, zasobów, bezpieczeństwa, stabilności (np. Windows Server, Red Hat Enterprise Linux).</li>
+                            <li><em>Desktopowe:</em> Optymalizacja pod kątem interfejsu użytkownika, aplikacji biurowych, multimediów (np. Windows, macOS, Ubuntu Desktop).</li>
+                            <li><em>Systemy Wbudowane:</em> Działają na dedykowanych urządzeniach, małe rozmiary, niskie zużycie zasobów, często RTOS (np. Android, Embedded Linux, VxWorks).</li>
+                            <li><em>Mainframe:</em> Obsługa ogromnych ilości danych i transakcji, najwyższa niezawodność (np. z/OS).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Licencja:</strong>
+                        <ul>
+                            <li><em>Otwarte Źródło (Open Source):</em> Kod źródłowy dostępny, możliwość modyfikacji (np. Linux, FreeBSD). <span class="highlight">Zastosowanie:</span> Serwery, embedded, edukacja, customizacja.</li>
+                            <li><em>Zamknięte (Proprietary):</em> Kod źródłowy niedostępny (np. Windows, macOS). <span class="highlight">Zastosowanie:</span> Desktop, serwery (Windows), sprzedaż komercyjna.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grupa 3: Procesy i Zarządzanie Procesami -->
+    <div class="group">
+        <h2>Grupa 3: Procesy i Zarządzanie Procesami</h2>
+
+        <div class="question">
+            <h3>1. Proces: Koncepcja, Struktura, Stany</h3>
+            <div class="answer">
+                <p><strong>Koncepcja:</strong> Wykonywany program. Instancja programu w pamięci wraz z niezbędnymi zasobami (CPU, pamięć, otwarte pliki) i kontekstem (stan rejestrów, licznik rozkazów, stos).</p>
+                <p><strong>Struktura Procesu (PCB - Process Control Block):</strong> Struktura danych jądra przechowująca wszystkie informacje o procesie:</p>
+                <ul>
+                    <li>Identyfikator procesu (PID)</li>
+                    <li>Stan procesu (np. running, ready, waiting)</li>
+                    <li>Licznik rozkazów (PC)</li>
+                    <li>Zawartość rejestrów CPU</li>
+                    <li>Informacje o planowaniu (priorytet, czasy)</li>
+                    <li>Informacje o pamięci (wskaźniki tablic stron, limity)</li>
+                    <li>Informacje o I/O (otwarte pliki, przydzielone urządzenia)</li>
+                    <li>Informacje księgowe</li>
+                </ul>
+                <p><strong>Stany Procesu:</strong></p>
+                <ul>
+                    <li><strong>Nowy (New):</strong> Proces jest tworzony.</li>
+                    <li><strong>Gotowy (Ready):</strong> Proces ma przydzielone wszystkie zasoby oprócz CPU. Czeka w kolejce na procesor.</li>
+                    <li><strong>Wykonywany (Running):</strong> Instrukcje procesu są wykonywane przez CPU.</li>
+                    <li><strong>Czekający (Waiting/Blocked):</strong> Proces nie może kontynuować, czeka na zdarzenie (zakończenie I/O, sygnał, zasób).</li>
+                    <li><strong>Zakończony (Terminated):</strong> Proces zakończył wykonanie (lub został zabity). Czeka na zwolnienie wpisu w tabeli procesów.</li>
+                </ul>
+                <p class="note"><em>Przejścia:</em> Nowy -> Gotowy; Gotowy <-> Wykonywany (planista); Wykonywany -> Czekający (oczekiwanie); Czekający -> Gotowy (zdarzenie); Wykonywany -> Zakończony.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>2. Planowanie Procesów</h3>
+            <div class="answer">
+                <p><strong>Cel:</strong> Przydzielanie czasu CPU dostępnym procesom w stanie Gotowy, aby zmaksymalizować wykorzystanie CPU, przepustowość, minimalizować czas oczekiwania i czas odpowiedzi.</p>
+                <p><strong>Kolejka Gotowych:</strong> Procesy w stanie Gotowy czekają w kolejce (często priorytetowej) na przydział CPU.</p>
+                <p><strong>Algorytmy Planowania (przykłady):</strong></p>
+                <ul>
+                    <li><em>FCFS (First-Come, First-Served):</em> Proste, niesprawiedliwe dla krótkich procesów (efekt konwoju).</li>
+                    <li><em>SJF (Shortest Job First):</em> Optymalny średni czas oczekiwania, trudny do przewidzenia długości.</li>
+                    <li><em>RR (Round Robin):</em> Każdy proces dostaje kwant czasu CPU (time slice). Jeśli nie skończy, wraca na koniec kolejki. Sprawiedliwy, dobra czas odpowiedzi.</li>
+                    <li><em>Priorytetowe:</em> Procesy z wyższym priorytetem są wybierane pierwsze (ryzyko zagłodzenia niskich).</li>
+                    <li><em>Wielopoziomowe Kolejki:</em> Dzieli procesy na grupy (np. interakcyjne, wsadowe) z własnymi kolejkami i algorytmami.</li>
+                </ul>
+                <p><strong>Planista (Scheduler):</strong> Część jądra implementująca algorytm planowania. Działa przy przełączeniu kontekstu lub gdy proces zakończy swój kwant czasu.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>3. Synchronizacja Procesów</h3>
+            <div class="answer">
+                <p><strong>Problem:</strong> Gdy wiele procesów współdzieli zasoby (pamięć, pliki) lub musi koordynować swoje działania, może dojść do <span class="highlight">wyścigów (race conditions)</span> - nieprzewidywalny wynik zależny od losowego czasu wykonania.</p>
+                <p><strong>Sekcja Krytyczna:</strong> Fragment kodu procesu, w którym dostęp do współdzielonych zasobów (danych) musi być chroniony. Tylko jeden proces może przebywać w swojej sekcji krytycznej w danym momencie.</p>
+                <p><strong>Mechanizmy Synchronizacji (realizowane przez jądro):</strong></p>
+                <ul>
+                    <li><strong>Blokady (Locks)/Muteksy (Mutexes):</strong> Najprostszy mechanizm. Proces musi "zdobyć" blokadę przed wejściem do sekcji krytycznej. Jeśli blokada jest zajęta, proces czeka.</li>
+                    <li><strong>Semafory:</strong> Uogólnienie blokady. Licznik całkowity. Operacje `wait()` (S--) i `signal()` (S++). Jeśli S &lt;= 0 przy `wait()`, proces czeka. Umożliwiają dostęp N procesom jednocześnie.</li>
+                    <li><strong>Monitory:</strong> Wyższy poziom abstrakcji (często w językach programowania). Sekcja krytyczna jest enkapsulowana w obiekcie monitora. Tylko jedna procedura monitora może być aktywna w danym momencie. Procesy czekają na zmiennych warunkowych.</li>
+                    <li><strong>Przesyłanie Komunikatów (IPC):</strong> Procesy komunikują się przez kanały (potoki, kolejki komunikatów, gniazda), wymieniając informacje zamiast bezpośrednio współdzielić pamięć.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>4. Zasoby & Operacje Jądra w Zarządzaniu Procesami i Zasobami</h3>
+            <div class="answer">
+                <p><strong>Zasób:</strong> Dowolny komponent sprzętowy (CPU, pamięć, port I/O, urządzenie) lub logiczny (plik, rekord w bazie, semafor), który musi być udostępniony procesom w sposób kontrolowany.</p>
+                <p><strong>Operacje Jądra:</strong></p>
+                <ul>
+                    <li><strong>Tworzenie/Zakładanie Procesu:</strong> `fork()` (Unix), `CreateProcess()` (Windows) - alokacja PCB, przestrzeń adresowa, inicjalizacja.</li>
+                    <li><strong>Zakończenie Procesu:</strong> `exit()` - zwalnianie zasobów, aktualizacja stanu PCB.</li>
+                    <li><strong>Czekanie na Proces Potomny:</strong> `wait()` - synchronizacja rodzic-dziecko.</li>
+                    <li><strong>Ładowanie Programu:</strong> `exec()` (Unix) - zastąpienie obrazu pamięci bieżącego procesu nowym programem.</li>
+                    <li><strong>Komunikacja (IPC):</strong> Udostępnianie mechanizmów (potoki, kolejki, pamięć wspólna, semafory).</li>
+                    <li><strong>Planowanie:</strong> Wybór następnego procesu do uruchomienia na CPU.</li>
+                    <li><strong>Przełączanie Kontekstu:</strong> Zapisanie stanu bieżącego procesu (rejestry) do jego PCB i załadowanie stanu nowego procesu z jego PCB do rejestrów CPU.</li>
+                    <li><strong>Alokacja/Zwolnienie Zasobów:</strong> Zarządzanie dostępem do pamięci, urządzeń I/O, plików, obiektów synchronizacji.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>5. Wątki: Pojęcie i Realizacja (jądro/użytkownik)</h3>
+            <div class="answer">
+                <p><strong>Pojęcie:</strong> "Lekki proces" (Lightweight Process - LWP). Jednostka wykonania w ramach procesu. Wątek współdzieli z innymi wątkami tego samego procesu: kod, dane (segmenty), otwarte pliki, sygnały. Ma własny: licznik rozkazów, zestaw rejestrów, stos.</p>
+                <p><strong>Zalety:</strong> Szybsze tworzenie/zniszczenie niż proces; szybsza komunikacja (przez wspólną pamięć); efektywniejsze wykorzystanie CPU w aplikacjach współbieżnych (np. GUI + obliczenia); lepsza responsywność.</p>
+                <p><strong>Realizacja:</strong></p>
+                <ul>
+                    <li><strong>Wątki Jądra (Kernel-Level Threads - KLT):</strong>
+                        <ul>
+                            <li>Zarządzane bezpośrednio przez jądro OS (każdy wątek ma swój wpis w strukturze jądra).</li>
+                            <li>Planista jądra planuje wątki.</li>
+                            <li><strong>Zalety:</strong> Jądro widzi wszystkie wątki i może przydzielić CPU różnym wątkom tego samego procesu na różnych rdzeniach.</li>
+                            <li><strong>Wada:</strong> Wolniejsze tworzenie/przełączanie (konieczność wejścia w tryb jądra).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Wątki Użytkownika (User-Level Threads - ULT):</strong>
+                        <ul>
+                            <li>Zarządzane przez bibliotekę w przestrzeni użytkownika (np. `pthreads`).</li>
+                            <li>Jądro widzi tylko pojedynczy proces (jeden wątek jądra).</li>
+                            <li>Planowanie wątków odbywa się w bibliotece użytkownika.</li>
+                            <li><strong>Zalety:</strong> Bardzo szybkie tworzenie/przełączanie (bez przełączania kontekstu do jądra); przenośność.</li>
+                            <li><strong>Wada:</strong> Jeśli jeden wątek ULT się zablokuje (np. na I/O), blokuje cały proces (wszystkie jego ULT); nie mogą być równolegle wykonywane na wielu rdzeniach CPU (chyba że połączone z KLT).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Modele Mieszane:</strong> Często stosowane (np. N ULT mapowanych na M KLT), łączą zalety obu podejść.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grupa 4: Zarządzanie Pamięcią i Pamięć Wirtualna -->
+    <div class="group">
+        <h2>Grupa 4: Zarządzanie Pamięcią i Pamięć Wirtualna</h2>
+
+        <div class="question">
+            <h3>1. Mapowanie Adresów Logicznych na Fizyczne i Weryfikacja Poprawności</h3>
+            <div class="answer">
+                <p><strong>Adres Logiczny (Wirtualny):</strong> Generowany przez CPU podczas wykonywania programu. Należy do przestrzeni adresowej procesu (0 do max).</p>
+                <p><strong>Adres Fizyczny:</strong> Rzeczywisty adres w pamięci RAM.</p>
+                <p><strong>Jednostka Zarządzania Pamięcią (MMU):</strong> Sprzęt na płycie głównej (często w CPU) tłumaczący adresy logiczne na fizyczne.</p>
+                <p><strong>Przykład (Stronicowanie) z Komentarzem:</strong></p>
+                <ul>
+                    <li>Załóżmy: Rozmiar strony = 4KB, Adres logiczny = 32 bity (4GB przestrzeń), Adres fizyczny = 30 bity (1GB RAM).</li>
+                    <li>Adres logiczny dzieli się na: <strong>Numer Strony (Page Number - PN)</strong> (20 bitów) + <strong>Przesunięcie w Stronie (Offset)</strong> (12 bitów).</li>
+                    <li><strong>Tablica Stron (Page Table):</strong> Struktura w pamięci, indeksowana przez PN. Każdy wpis (Page Table Entry - PTE) zawiera:
+                        <ul>
+                            <li><strong>Bit Obecności (Present Bit - P):</strong> 1 = strona w RAM, 0 = strona nie w RAM (brak strony).</li>
+                            <li><strong>Numer Ramki (Frame Number - FN):</strong> Jeśli P=1, tu jest numer ramki fizycznej w pamięci RAM.</li>
+                            <li>Inne bity (dostęp, modyfikacja, ochrona).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Proces Mapowania:</strong>
+                        <ol>
+                            <li>CPU generuje adres logiczny (np. `0x00001234`).</li>
+                            <li>MMU wyciąga PN (20 górnych bitów: `0x00001`) i Offset (12 dolnych bitów: `0x234`).</li>
+                            <li>MMU używa PN jako indeksu do Tablicy Stron procesu (adres tablicy jest w rejestrze specjalnym CPU).</li>
+                            <li>Sprawdza bit P w PTE:
+                                <ul>
+                                    <li><strong>P=1:</strong> Pobiera FN z PTE (np. `0x00A`). Adres fizyczny = FN (20 bitów) + Offset (12 bitów) = `0x00A234`.</li>
+                                    <li><strong>P=0:</strong> <span class="highlight">Błąd Braku Strony (Page Fault)</span> -> Przerwanie do jądra OS.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </li>
+                </ul>
+                <p><strong>Weryfikacja Poprawności:</strong> MMU sprawdza bit P. Jeśli P=0, adres jest niepoprawny (strona niezaładowana) lub dostęp zabroniony (sprawdzane bity ochrony w PTE) - generowany jest wyjątek (Page Fault lub Protection Fault), który OS musi obsłużyć.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>2. Pamięć Wirtualna: Podstawa i Główne Problemy</h3>
+            <div class="answer">
+                <p><strong>Podstawa Funkcjonowania:</strong> Pozwala uruchamiać programy większe niż dostępna pamięć fizyczna (RAM). Tworzy iluzję bardzo dużej, jednolitej przestrzeni adresowej dla każdego procesu. <strong>Kluczowe Techniki:</strong></p>
+                <ul>
+                    <li><strong>Stronicowanie (Paging):</strong> Pamięć logiczna i fizyczna dzielona na małe, stałej wielkości bloki (strony i ramki). Tylko aktywnie używane strony procesu znajdują się w RAM. Reszta jest na dysku (obszar wymiany - swap space).</li>
+                    <li><strong>Segmentacja (Segmentation - rzadziej stosowana jako jedyna):</strong> Dzielenie pamięci logicznej na segmenty o zmiennej długości (kod, dane, stos) mapowane na pamięć fizyczną.</li>
+                </ul>
+                <p><strong>Główne Problemy Realizacji:</strong></p>
+                <ul>
+                    <li><strong>Wydajność Tłumaczenia Adresów (TLB):</strong> Każde odwzorowanie wymagałoby 2 dostępów do pamięci (1 do tablicy stron, 1 do danych). Rozwiązanie: <span class="highlight">Pamięć Asocjacyjna (TLB - Translation Lookaside Buffer)</span> - bufor najczęściej używanych odwzorowań PN->FN w szybkiej pamięci podręcznej MMU.</li>
+                    <li><strong>Zarządzanie Obszarem Wymiany (Swap Space):</strong> Wydajne miejsce na dysku do przechowywania stron nieużywanych. Wydajny algorytm zapisu/odczytu stron.</li>
+                    <li><strong>Algorytm Zastępowania Stron (Page Replacement):</strong> Gdy trzeba załadować nową stronę do RAM, a wszystkie ramki są zajęte, którą stronę usunąć (wysłać na dysk)? Zły algorytm prowadzi do <span class="highlight">Thrashingu</span>.</li>
+                    <li><strong>Thrashing:</strong> Stan, gdy system spędza więcej czasu na przenoszeniu stron między dyskiem a RAM (obsługa Page Faultów) niż na wykonywaniu użytecznej pracy. Powód: Zbyt wiele aktywnych procesów w stosunku do dostępnej pamięci fizycznej. Rozwiązanie: "Środek na grypę" - zmniejszenie stopnia wieloprogramowości (liczba procesów w pamięci), zwiększenie RAM, lepszy algorytm zastępowania.</li>
+                    <li><strong>Alokacja Ramek:</strong> Ile ramek przydzielić każdemu procesowi? (np. równe proporcje, proporcjonalne do rozmiaru, oparte na priorytecie).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>3. Algorytm Dodatkowych Bitów Odniesienia (Clock / Second Chance)</h3>
+            <div class="answer">
+                <p><strong>Podstawa:</strong> Każda strona w RAM ma <strong>bit odniesienia (Reference Bit - R)</strong>, ustawiany sprzętowo przez MMU na 1 przy KAŻDYM odwołaniu (odczycie lub zapisie) do tej strony.</p>
+                <p><strong>Wybór Strony do Usunięcia:</strong></p>
+                <ol>
+                    <li>Ramki są logicznie ułożone w okrągłą listę (jak tarcza zegara). Wskaźnik wskazuje następną kandydatkę.</li>
+                    <li>Sprawdź stronę wskazywaną:
+                        <ul>
+                            <li><strong>Jeśli R=0:</strong> "Stara" (nieużywana od dłuższego czasu). <span class="highlight">Wybierz ją do usunięcia.</span> Przesuń wskaźnik.</li>
+                            <li><strong>Jeśli R=1:</strong> Daj jej "drugą szansę". <span class="highlight">Wyzeruj jej bit R</span>. Przesuń wskaźnik do następnej ramki. <strong>Nie usuwaj jej jeszcze</strong>.</li>
+                        </ul>
+                    </li>
+                    <li>Powtarzaj krok 2, aż znajdziesz stronę z R=0.</li>
+                </ol>
+                <p><strong>Strona Usuwana:</strong> Strona, dla której <span class="highlight">R=0</span> w momencie sprawdzenia przez algorytm.</p>
+                <p><strong>Przykład Graficzny Wyboru:</strong></p>
+                <pre><code>Tarcza Zegara: [Ptr-> (R=1, Strona A)] -> (R=0, Strona B) -> (R=1, Strona C) -> (R=0, Strona D) -> ...
+Krok 1: Strona A (R=1) -> Zeruj R (R=0), przesuń Ptr -> B.
+Krok 2: Strona B (R=0) -> <strong>USUŃ STRONĘ B</strong>.
+Tarcza po: [ (R=0, Strona A)] -> [USUNIĘTE] -> (R=1, Strona C) -> (R=0, Strona D) -> ... Ptr-> C.</code></pre>
+                <p class="note"><em>W następnym wywołaniu:</em> Sprawdzanie zacznie się od C (R=1 -> zeruj do 0, przejdź do D). D (R=0) -> <strong>USUŃ D</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grupa 5: Mikroprocesor i Przerwania -->
+    <div class="group">
+        <h2>Grupa 5: Mikroprocesor i Przerwania</h2>
+
+        <div class="question">
+            <h3>1. Mikroprocesor: Budowa i Rodzaje</h3>
+            <div class="answer">
+                <p><strong>Budowa (Podstawowe Jednostki):</strong></p>
+                <ul>
+                    <li><strong>ALU (Arithmetic Logic Unit):</strong> Wykonuje operacje arytmetyczne (+, -, *, /) i logiczne (AND, OR, NOT, XOR).</li>
+                    <li><strong>CU (Control Unit):</strong> Steruje przepływem danych i instrukcji wewnątrz CPU oraz komunikacją z innymi komponentami (pamięć, I/O). Dekoduje instrukcje, generuje sygnały sterujące.</li>
+                    <li><strong>Rejestry:</strong> Bardzo szybka pamięć wewnętrzna CPU:
+                        <ul>
+                            <li><em>Ogólnego Przeznaczenia:</em> Przechowują dane operandów i wyniki (np. EAX, EBX w x86).</li>
+                            <li><em>Specjalne:</em> PC (Program Counter / IP - Instruction Pointer) - adres następnej instrukcji; SP (Stack Pointer) - wierzchołek stosu; Statusowy (Flags) - bity stanu (zero, przeniesienie, znak, itp.).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cache:</strong> Bardzo szybka pamięć podręczna (L1, L2, L3) buforująca często używane instrukcje i dane z wolniejszej pamięci głównej (RAM).</li>
+                    <li><strong>Jednostka Zarządzania Pamięcią (MMU):</strong> (Często integrowana) Odpowiada za tłumaczenie adresów wirtualnych na fizyczne i ochronę pamięci.</li>
+                    <li><strong>Jednostka Zarządzania Peryferiami / Szyna:</strong> Interfejs do komunikacji z resztą systemu (pamięć, I/O) poprzez szynę systemową.</li>
+                </ul>
+                <p><strong>Rodzaje (Główne Architektury):</strong></p>
+                <ul>
+                    <li><strong>CISC (Complex Instruction Set Computer):</strong> Duża liczba złożonych instrukcji (często wykonujących wiele operacji), różnej długości. Przykład: x86 (Intel, AMD). <em>Zalety:</em> Gęsty kod, łatwiejszy kompilator? <em>Wady:</em> Złożona implementacja, trudna potokowalność.</li>
+                    <li><strong>RISC (Reduced Instruction Set Computer):</strong> Mała liczba prostych instrukcji (o stałej długości), wykonywanych w jednym cyklu zegara. Przykład: ARM, MIPS, RISC-V. <em>Zalety:</em> Prostsza/szybsza implementacja, lepsza potokowalność. <em>Wady:</em> Większy rozmiar kodu.</li>
+                    <li><strong>Inne:</strong> VLIW (Very Long Instruction Word), EPIC (Explicitly Parallel Instruction Computing - Itanium), procesory graficzne (GPU), akceleratory (TPU, NPU).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>2. Przerwania Sprzętowe</h3>
+            <div class="answer">
+                <p><strong>Pojęcie:</strong> Sygnał wysyłany do CPU przez urządzenie peryferyjne (dysk, klawiatura, karta sieciowa, timer) lub przez sam CPU (wyjątki), informujący o zdarzeniu wymagającym natychmiastowej uwagi.</p>
+                <p><strong>Cel:</strong> Umożliwienie asynchronicznej obsługi zdarzeń zewnętrznych bez konieczności ciągłego sprawdzania (pollingu) stanu urządzeń przez CPU. Pozwala CPU na efektywną pracę pomiędzy zdarzeniami.</p>
+                <p><strong>Cykl Obsługi Przerwania:</strong></p>
+                <ol>
+                    <li><strong>Zakończenie Bieżącej Instrukcji:</strong> CPU kończy wykonanie bieżącej instrukcji (chyba że to przerwanie nieblokowalne - NMI).</li>
+                    <li><strong>Zapis Stanu:</strong> Automatyczny (sprzętowy) zapis minimalnego kontekstu (zwykle PC i rejestr flag) na stosie (lub w specjalnych rejestrach).</li>
+                    <li><strong>Identyfikacja Źródła:</strong> CPU ustala, które urządzenie wysłało przerwanie (liniowo - wektor przerwań, lub przez polling).</li>
+                    <li><strong>Przełączenie w Tryb Jądra:</strong> CPU przełącza się w tryb uprzywilejowany (kernel mode).</li>
+                    <li><strong>Wywołanie Procedury Obsługi (ISR):</strong> CPU skacze do adresu procedury obsługi przerwania (Interrupt Service Routine) dla danego źródła. Adresy ISR przechowywane są w <strong>Tablicy Wektorów Przerwań (IVT - Interrupt Vector Table)</strong> lub <strong>Tablicy Deskryptorów Przerwań (IDT - Interrupt Descriptor Table)</strong>.</li>
+                    <li><strong>Wykonanie ISR:</strong> Kod jądra OS obsługuje zdarzenie (np. odczytuje dane z portu urządzenia, ustawia flagi).</li>
+                    <li><strong>Powrót (IRET):</strong> Przywrócenie zapisanego kontekstu (PC, flagi) ze stosu i powrót do przerwanego programu w trybie użytkownika.</li>
+                </ol>
+                <p><strong>Maskowanie:</strong> Niższe priorytetowe przerwania mogą być czasowo blokowane (maskowane) podczas obsługi ważniejszego przerwania lub sekcji krytycznej kodu jądra.</p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
